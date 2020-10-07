@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="4028" compareModeInSync="TIMESTAMP">
+    <serverData>
+      <paths name="4028">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/aistudio/Desktop/remote/imageNet" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/home/aistudio/Desktop/remote/imageNet/venv" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

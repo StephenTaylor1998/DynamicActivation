@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="449af2ce-00ff-41bd-a781-9b58f81dc42a" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1iDJtyWWzHJqsZCNgrjieuGDWyA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="efficientnet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="imageNet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/models/efficientnet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.efficientnet" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="449af2ce-00ff-41bd-a781-9b58f81dc42a" name="Default Changelist" comment="" />
+      <created>1601436447558</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601436447558</updated>
+      <workItem from="1601436453081" duration="2392000" />
+      <workItem from="1601438943910" duration="3075000" />
+      <workItem from="1601465135830" duration="1093000" />
+      <workItem from="1601480885912" duration="599000" />
+      <workItem from="1601615879990" duration="1266000" />
+      <workItem from="1601623650575" duration="15779000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="663" y="212" width="800" height="677" key="#Deployment" timestamp="1601436827177">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="663" y="212" width="800" height="677" key="#Deployment/67.27.1853.1053@67.27.1853.1053" timestamp="1601436827177" />
+    <state x="350" y="151" width="1220" height="794" key="DirDiffDialog" timestamp="1601625398334">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="350" y="151" width="1220" height="794" key="DirDiffDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1601625398334" />
+    <state x="405" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1601465263024">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="405" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1601465263024" />
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1601631557506">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1601631557506" />
+    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1601631557506">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1601631557506" />
+    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1601631557505">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1601631557505" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1601631557506">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1601631557506" />
+    <state x="545" y="198" key="SettingsEditor" timestamp="1601437072490">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="545" y="198" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1601437072490" />
+    <state x="686" y="275" width="373" height="635" key="ftp.server.browser" timestamp="1601437048917">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="686" y="275" width="373" height="635" key="ftp.server.browser/67.27.1853.1053@67.27.1853.1053" timestamp="1601437048917" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/imageNet$efficientnet.coverage" NAME="efficientnet Coverage Results" MODIFIED="1601627177043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/models" />
+  </component>
+</project>
