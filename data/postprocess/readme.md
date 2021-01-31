@@ -3,7 +3,7 @@
 ## This is a script used to process the data in the training log
 
 #### Getting start
- - Modify variable 'model_name' in 'data/postprocess/run_postprocess.py' and makes him point to a log in 'data/log/'
+ - Modify variable 'model_name' in 'data/postprocess/run_postprocess.py' and makes him point to a log in 'data/logs/'
 
  - Open terminal in 'data/postprocess/' run this command
 
@@ -14,20 +14,20 @@
  -  View results in data/processed
 
 ## tips
- - Source of file in data/log
+ - Source of file in data/logs
  
 ```
     After using the command python main.py to train the model, 
     the training log will be printed but not saved,
     logs can be obtained by a relocating command.
-    Log files should be put into data/log.
+    Log files should be put into data/logs.
     In Linux, the log can be obtained by sh xxx.sh > xxx.log.txt command.
 ```
 
 Example
 
 ```bash
-sh train_resnet18_multi_GPU.sh > ./data/log/resnet18.log.txt
+sh train_resnet18_multi_GPU.sh > ./data/logs/resnet18.log.txt
 ```
 
  - Annotations

@@ -1,7 +1,7 @@
 # 数据后处理脚本
 ## 这是一个用来处理训练日志中的数据的脚本
 #### 开始使用
- - 修改 data/postprocess/run_postprocess.py中的model_name使他指向data/log/中的一个日志
+ - 修改 data/postprocess/run_postprocess.py中的model_name使他指向data/logs/中的一个日志
 
  - 在data/postprocess/路径下打开终端，运行如下命令
 
@@ -12,11 +12,11 @@
  -  在data/processed下查看结果
 
 ## tips
- - data/log下的文件来源
-    使用命令 python main.py 模型训练后会打印训练日志但不会保存，可以通过重定位获取日志。日志文件放入data/log中即可。linux用户可尝试bash xxx.sh > xxx.log.txt获取日志。例如
+ - data/logs下的文件来源
+    使用命令 python main.py 模型训练后会打印训练日志但不会保存，可以通过重定位获取日志。日志文件放入data/logs中即可。linux用户可尝试bash xxx.sh > xxx.log.txt获取日志。例如
 
 ```bash
-sh train_resnet18_multi_GPU.sh > ./data/log/resnet18.log.txt
+sh train_resnet18_multi_GPU.sh > ./data/logs/resnet18.log.txt
 ```
 
  - 注释
