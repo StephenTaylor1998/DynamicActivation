@@ -1,6 +1,7 @@
 import os
 import random
 import warnings
+
 import torch
 import torch.backends.cudnn as cudnn
 import torch.multiprocessing as mp
@@ -8,12 +9,12 @@ import torch.nn.parallel
 import torch.optim
 import torch.utils.data
 import torch.utils.data.distributed
-from torchvision import models
+
 from core.datasets.classify_dataset import classify_dataset_sample
 # from core.engine.classify import main_worker
 from core.engine.distributed_engine import main_worker
+from core.models.efficientnet import b7
 from core.utils.argparse import arg_parse
-from core.models.efficientnet import b0, b7
 
 parser = arg_parse()
 
