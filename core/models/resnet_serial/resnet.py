@@ -9,7 +9,7 @@ try:
 except ImportError:
     from torch.utils.model_zoo import load_url as load_state_dict_from_url
 
-__all__ = ['ResNet', 'dynamicresnet18', 'dynamicresnet34', 'dynamicresnet50', 'dynamicresnet101',
+__all__ = ['DynamicResNet', 'dynamicresnet18', 'dynamicresnet34', 'dynamicresnet50', 'dynamicresnet101',
            'dynamicresnet152', 'dynamicresnext50_32x4d', 'dynamicresnext101_32x8d',
            'dynamicwide_resnet50_2', 'dynamicwide_resnet101_2']
 
@@ -129,12 +129,12 @@ class Bottleneck(nn.Module):
         return out
 
 
-class ResNet(nn.Module):
+class DynamicResNet(nn.Module):
 
     def __init__(self, block, layers, num_classes=1000, zero_init_residual=False,
                  groups=1, width_per_group=64, replace_stride_with_dilation=None,
                  norm_layer=None):
-        super(ResNet, self).__init__()
+        super(DynamicResNet, self).__init__()
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
         self._norm_layer = norm_layer
@@ -229,7 +229,7 @@ class ResNet(nn.Module):
 
 
 def _resnet(arch, block, layers, pretrained, progress, **kwargs):
-    model = ResNet(block, layers, **kwargs)
+    model = DynamicResNet(block, layers, **kwargs)
     if pretrained:
         state_dict = load_state_dict_from_url(model_urls[arch],
                                               progress=progress)
