@@ -22,6 +22,7 @@ def classify_dataset(data_dir, not_strict=False):
         ]))
 
 
+# train dataset example
 def classify_train_dataset(train_dir, not_strict=False):
     if not os.path.exists(train_dir) and not_strict:
         print("train_dir ==> '%s' is not found" % train_dir)
@@ -43,6 +44,7 @@ def classify_train_dataset(train_dir, not_strict=False):
     return train_dataset
 
 
+# val dataset example
 def classify_val_dataset(val_dir, not_strict=False):
     if not os.path.exists(val_dir) and not_strict:
         print("valdir ==> '%s' is not found" % val_dir)
@@ -63,6 +65,7 @@ def classify_val_dataset(val_dir, not_strict=False):
     return val_dataset
 
 
+# test dataset example
 def classify_test_dataset(testdir, not_strict=False):
     if not os.path.exists(testdir) and not_strict:
         print("testdir ==> '%s' is not found" % testdir)
