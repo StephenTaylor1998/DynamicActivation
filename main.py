@@ -12,6 +12,7 @@ import torch.utils.data.distributed
 
 from core.engine.classify import main_worker
 from core.utils.argparse import arg_parse
+from core.utils.copy_weights import copy_weights
 
 parser = arg_parse()
 
@@ -53,3 +54,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print('finished!\n')
+    copy_weights(parser.parse_args())

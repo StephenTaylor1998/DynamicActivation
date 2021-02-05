@@ -114,7 +114,12 @@ def main_worker(gpu, ngpus_per_node, args):
     train_dataset = datasets.ImageFolder(
         traindir,
         transforms.Compose([
-            transforms.RandomResizedCrop(224),
+            # transforms.RandomResizedCrop(224),
+            # transforms.RandomHorizontalFlip(),
+            # transforms.ToTensor(),
+            # normalize,
+            transforms.Resize(144),
+            transforms.RandomCrop(128),
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
             normalize,
@@ -133,18 +138,12 @@ def main_worker(gpu, ngpus_per_node, args):
 
     val_loader = torch.utils.data.DataLoader(
         datasets.ImageFolder(valdir, transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
-            transforms.ToTensor(),
-            normalize,
-        ])),
-        batch_size=args.batch_size, shuffle=False,
-        num_workers=args.workers, pin_memory=True)
-
-    test_loader = torch.utils.data.DataLoader(
-        datasets.ImageFolder(testdir, transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
+            # transforms.Resize(256),
+            # transforms.CenterCrop(224),
+            # transforms.ToTensor(),
+            # normalize,
+            transforms.Resize(144),
+            transforms.CenterCrop(128),
             transforms.ToTensor(),
             normalize,
         ])),
@@ -156,6 +155,20 @@ def main_worker(gpu, ngpus_per_node, args):
         return
 
     if args.test:
+        test_loader = torch.utils.data.DataLoader(
+            datasets.ImageFolder(testdir, transforms.Compose([
+                # transforms.Resize(256),
+                # transforms.CenterCrop(224),
+                # transforms.ToTensor(),
+                # normalize,
+                transforms.Resize(144),
+                transforms.CenterCrop(128),
+                transforms.ToTensor(),
+                normalize,
+            ])),
+            batch_size=args.batch_size, shuffle=False,
+            num_workers=args.workers, pin_memory=True)
+
         validate(train_loader, model, criterion, args)
         print('TEST IN TRAIN SET')
         validate(val_loader, model, criterion, args)
