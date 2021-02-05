@@ -12,7 +12,9 @@ import torchvision.datasets as datasets
 from core import models
 import torchvision.transforms as transforms
 
-# from core.datasets.classify_dataset import classify_dataset_sample
+from core.datasets.classify_dataset import classify_train_dataset
+from core.datasets.classify_dataset import classify_val_dataset
+from core.datasets.classify_dataset import classify_test_dataset
 from core.engine.base import validate, adjust_learning_rate, train, save_checkpoint
 
 best_acc1 = 0
@@ -111,21 +113,7 @@ def main_worker(gpu, ngpus_per_node, args):
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                      std=[0.229, 0.224, 0.225])
 
-    train_dataset = datasets.ImageFolder(
-        traindir,
-        transforms.Compose([
-            # transforms.RandomResizedCrop(224),
-            # transforms.RandomHorizontalFlip(),
-            # transforms.ToTensor(),
-            # normalize,
-            transforms.Resize(144),
-            transforms.RandomCrop(128),
-            transforms.RandomHorizontalFlip(),
-            transforms.ToTensor(),
-            normalize,
-        ]))
-
-    # train_dataset = classify_dataset_sample(traindir)
+    train_dataset = classify_train_dataset(traindir)
 
     if args.distributed:
         train_sampler = torch.utils.data.distributed.DistributedSampler(train_dataset)
@@ -137,16 +125,7 @@ def main_worker(gpu, ngpus_per_node, args):
         num_workers=args.workers, pin_memory=True, sampler=train_sampler)
 
     val_loader = torch.utils.data.DataLoader(
-        datasets.ImageFolder(valdir, transforms.Compose([
-            # transforms.Resize(256),
-            # transforms.CenterCrop(224),
-            # transforms.ToTensor(),
-            # normalize,
-            transforms.Resize(144),
-            transforms.CenterCrop(128),
-            transforms.ToTensor(),
-            normalize,
-        ])),
+        classify_val_dataset(valdir),
         batch_size=args.batch_size, shuffle=False,
         num_workers=args.workers, pin_memory=True)
 
@@ -156,16 +135,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
     if args.test:
         test_loader = torch.utils.data.DataLoader(
-            datasets.ImageFolder(testdir, transforms.Compose([
-                # transforms.Resize(256),
-                # transforms.CenterCrop(224),
-                # transforms.ToTensor(),
-                # normalize,
-                transforms.Resize(144),
-                transforms.CenterCrop(128),
-                transforms.ToTensor(),
-                normalize,
-            ])),
+            classify_test_dataset(testdir),
             batch_size=args.batch_size, shuffle=False,
             num_workers=args.workers, pin_memory=True)
 
