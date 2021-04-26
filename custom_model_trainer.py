@@ -10,7 +10,7 @@ import torch.optim
 import torch.utils.data
 import torch.utils.data.distributed
 
-from core.datasets.classify_dataset import classify_dataset_sample
+from core.datasets.data.image_folder import classify_dataset
 # from core.engine.classify import main_worker
 from core.engine.distributed_engine import main_worker
 from core.models.efficientnet import b7
@@ -43,18 +43,12 @@ def main():
 
     ngpus_per_node = torch.cuda.device_count()
 
-    # if args.pretrained:
-    #     print("=> using pre-trained model '{}'".format(args.arch))
-    #     model = models.__dict__[args.arch](pretrained=True)
-    # else:
-    #     print("=> creating model '{}'".format(args.arch))
-    #     model = models.__dict__[args.arch]()
 
     model = b7()
     model.cuda()
 
-    train_dataset = classify_dataset_sample(os.path.join(args.data, 'train'))
-    val_dataset = classify_dataset_sample(os.path.join(args.data, 'val'))
+    train_dataset = classify_dataset(os.path.join(args.data, 'train'))
+    val_dataset = classify_dataset(os.path.join(args.data, 'val'))
     if args.multiprocessing_distributed:
         args.world_size = ngpus_per_node * args.world_size
         mp.spawn(main_worker, nprocs=ngpus_per_node, args=(ngpus_per_node, model, train_dataset, val_dataset, args))

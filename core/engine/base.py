@@ -7,6 +7,8 @@ import torch.optim
 import torch.utils.data
 import torch.utils.data.distributed
 
+from core.utils.copy_weights import copy_weights
+
 
 def train(train_loader, model, criterion, optimizer, epoch, args):
     batch_time = AverageMeter('Time', ':6.3f')
@@ -108,6 +110,7 @@ def save_checkpoint(state, is_best, filename='data/checkpoint.pth.tar'):
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""
+
     def __init__(self, name, fmt=':f'):
         self.name = name
         self.fmt = fmt
@@ -150,6 +153,19 @@ class ProgressMeter(object):
 def adjust_learning_rate(optimizer, epoch, args):
     """Sets the learning rate to the initial LR decayed by 10 every 30 epochs"""
     lr = args.lr * (0.1 ** (epoch // 30))
+    for param_group in optimizer.param_groups:
+        param_group['lr'] = lr
+
+
+def adjust_learning_rate_cifar(optimizer, epoch, args):
+    if epoch < 150:
+        lr = args.lr
+    elif epoch < 250:
+        lr = args.lr * 0.1
+    elif epoch < 350:
+        lr = args.lr * 0.01
+    else:
+        lr = args.lr * 0.001
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 

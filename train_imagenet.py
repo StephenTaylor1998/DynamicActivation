@@ -1,7 +1,6 @@
 import os
 import random
 import warnings
-
 import torch
 import torch.backends.cudnn as cudnn
 import torch.multiprocessing as mp
@@ -10,7 +9,7 @@ import torch.optim
 import torch.utils.data
 import torch.utils.data.distributed
 
-from core.engine.classify import main_worker
+from core.engine.imagenet import main_worker
 from core.utils.argparse import arg_parse
 
 parser = arg_parse()

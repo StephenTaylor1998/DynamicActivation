@@ -8,18 +8,18 @@ import torch.optim
 import torch.utils.data
 import torch.utils.data.distributed
 from core import models
-from core.datasets.data.image_folder import classify_train_dataset
-from core.datasets.data.image_folder import classify_val_dataset
-from core.datasets.data.image_folder import classify_test_dataset
-from core.engine.base import validate, adjust_learning_rate, train, save_checkpoint
+from core.datasets.data_zoo import get_data_by_name
+from core.engine.auto_encoder.base import train, validate
+from core.engine.base import save_checkpoint, adjust_learning_rate
 from core.utils.copy_weights import copy_weights
 from core.utils.resume import resume_from_checkpoint
-
-best_acc1 = 0
+# from core.datasets.data.image_folder import classify_train_dataset
+# from core.datasets.data.image_folder import classify_val_dataset
+# from core.datasets.data.image_folder import classify_test_dataset
 
 
 def main_worker(gpu, ngpus_per_node, args):
-    global best_acc1
+
     args.gpu = gpu
 
     if args.gpu is not None:
@@ -64,7 +64,7 @@ def main_worker(gpu, ngpus_per_node, args):
             model = torch.nn.DataParallel(model).cuda()
 
     # define loss function (criterion) and optimizer
-    criterion = nn.CrossEntropyLoss().cuda(args.gpu)
+    criterion = nn.MSELoss().cuda(args.gpu)
 
     optimizer = torch.optim.SGD(model.parameters(), args.lr,
                                 momentum=args.momentum,
@@ -73,18 +73,11 @@ def main_worker(gpu, ngpus_per_node, args):
     #                             weight_decay=args.weight_decay)
 
     # optionally resume from a checkpoint
-    if args.resume:
-        args, model, optimizer, best_acc1 = resume_from_checkpoint(args, model, optimizer, best_acc1)
 
     cudnn.benchmark = True
 
     # Data loading code
-    # traindir = os.path.join(args.data, 'train')
-    # valdir = os.path.join(args.data, 'val')
-    # testdir = os.path.join(args.data, 'test')
-
-    # train data loader is here, distribute is support #
-    train_dataset = classify_train_dataset(args.data)
+    train_dataset, val_dataset, test_dataset = get_data_by_name(args.data_format, data_dir=args.data)
 
     if args.distributed:
         train_sampler = torch.utils.data.distributed.DistributedSampler(train_dataset)
@@ -98,7 +91,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
     # val data loader is here #
     val_loader = torch.utils.data.DataLoader(
-        classify_val_dataset(args.data),
+        val_dataset,
         batch_size=args.batch_size, shuffle=False,
         num_workers=args.workers, pin_memory=True)
     # ^^^^^^^^^^^^^^^^^^^^^^^ #
@@ -108,7 +101,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
     if args.test:
         test_loader = torch.utils.data.DataLoader(
-            classify_test_dataset(args.data),
+            test_dataset,
             batch_size=args.batch_size, shuffle=False,
             num_workers=args.workers, pin_memory=True)
 
@@ -129,19 +122,4 @@ def main_worker(gpu, ngpus_per_node, args):
         train(train_loader, model, criterion, optimizer, epoch, args)
 
         # evaluate on validation set
-        acc1 = validate(val_loader, model, criterion, args)
-
-        # remember best acc@1 and save checkpoint
-        is_best = acc1 > best_acc1
-        best_acc1 = max(acc1, best_acc1)
-
-        if not args.multiprocessing_distributed or (args.multiprocessing_distributed
-                                                    and args.rank % ngpus_per_node == 0):
-            save_checkpoint({
-                'epoch': epoch + 1,
-                'arch': args.arch,
-                'state_dict': model.state_dict(),
-                'best_acc1': best_acc1,
-                'optimizer': optimizer.state_dict(),
-            }, is_best, args)
-            copy_weights(args, epoch)
+        validate(val_loader, model, criterion, args)
